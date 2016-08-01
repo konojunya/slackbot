@@ -5,7 +5,7 @@ var bot = Botkit.slackbot({
 });
 
 bot.spawn({
-    token: 'xoxb-64932124150-yl1dM2BrasgI7KN9tbe6ccY6'
+    token: process.env.SLACKBOT_ISHIHARASATOMI
 }).startRTM();
 
 bot.hears('.*',['ambient'],function(bot,message) {
