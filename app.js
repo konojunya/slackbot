@@ -8,10 +8,11 @@ bot.spawn({
     token: process.env.SLACKBOT_ISHIHARASATOMI
 }).startRTM();
 
+
 bot.hears('.*',['ambient'],function(bot,message) {
 	if(!(message.text.match(/^http/))){
-		var rand = Math.floor(Math.random()*10);
-		if(rand < 8 && rand%2 == 0){
+		var rand = Math.floor(Math.random()*100);
+		if(rand < 15 && rand%2 == 0){
 			var headers = {
 				'Content-Type':'application/json'
 			}
@@ -22,7 +23,7 @@ bot.hears('.*',['ambient'],function(bot,message) {
 			  json: true,
 			  form: {
 			  	message: encodeURI(message.text),
-			  	key: "707c21dde077c69f68ac"
+			  	key: process.env.USER_LOCAL_AI_KEY
 			  }
 			}
 			request(options, function (error, res, body) {
@@ -42,7 +43,7 @@ bot.hears('.*',['direct_message','direct_mention','mention'],function(bot,messag
 	  json: true,
 	  form: {
 	  	message: encodeURI(message.text),
-	  	key: "707c21dde077c69f68ac"
+	  	key: process.env.USER_LOCAL_AI_KEY
 	  }
 	}
 	request(options, function (error, res, body) {
